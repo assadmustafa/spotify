@@ -10,24 +10,25 @@ namespace Spotify
     {
         public Person Owner;
 
-        public Playlist(Person person,string name)
+        public Playlist(Person person,string name) : base(name)
         {
-            
+            this.Owner = person;
+            this.Owner.Name = name;
         }
 
         public void Add(iPlayable iPlayable)
         {
-
+            playables.Add(iPlayable);
         }
 
         public void Remove(iPlayable iPlayable)
         {
-
+            playables.Remove(iPlayable);
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            return this.Owner.Name;
         }
     }
 }

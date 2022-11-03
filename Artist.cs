@@ -10,27 +10,28 @@ namespace Spotify
     {
         /// Properties ///
         public string Naam;
-        private List<Album> Albums;
-        private List<Song> Songs;
+        public List<Album> Albums;
+        protected List<Song> Songs;
 
         /// Methods ///
-        public Artist(string name, List<Album> Albums)
+        public Artist(string name, List<Album> albums)
         {
-
+            this.Naam = name;
+            this.Albums = albums;
         }
 
         public void AddSong(Song song)
         {
-
+            this.Songs.Add(song);
         }
 
         public void AddAlbum(Album album)
         {
-
+            this.Albums.Add(album);
         }
         public override string ToString()
         {
-            return base.ToString();
+            return this.Naam;
         }
 
     }

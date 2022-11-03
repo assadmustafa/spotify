@@ -3,39 +3,72 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Spotify;
 
 namespace Spotify
 {
-    internal class SuperUser
+    internal class SuperUser : Person
     {
-        void AddFriend(Person person)
-        {
 
+        public SuperUser(string user) : base(user)
+        {
+            
         }
 
-        void RemoveFriend(Person person)
+        public void AddFriend(Person person)
         {
-
+            Friends.Add(person);
         }
 
-        Playlist CreatePlayList(string name) 
-        { 
-            return null; 
+        public void RemoveFriend(Person person)
+        {
+            for (int i = 0; i < Friends.Count; i++)
+            {
+                if (Friends[i] == person)
+                {
+                    Friends.Remove(Friends[i]);
+                    Console.WriteLine("Person has been moved to the trash");
+                }
+            }
         }
 
-        void RemovePlayList(int num)
+        Playlist CreatePlayList(string name)
         {
-
+            return new Playlist(new Person(Name),name);
         }
 
-        void AddToPlayList(iPlayable iPlayable)
+        public void RemovePlayList(int num)
         {
-
+            for (int i = 0; i < Playlists.Count; i++)
+            {
+                if (Playlists[i].Equals(num))
+                {
+                    Playlists.Remove(Playlists[i]);
+                    Console.WriteLine("Playlist has been moved to the trash");
+                }
+            }
         }
 
-        void RemoveFromPlaylist(iPlayable iPlayable)
+        public void AddToPlayList(iPlayable iPlayable)
         {
+            Console.WriteLine("Enter playlist number:");
+            for (int i = 0; i < Playlists.Count; i++)
+            {
+                Console.WriteLine(Playlists[i].Title + "\n");
+            }
+            int num = Console.Read();
+            Playlists[num].Add(iPlayable);
+        }
 
+        public void RemoveFromPlaylist(iPlayable iPlayable)
+        {
+            Console.WriteLine("Enter playlist number:");
+            for (int i = 0; i < Playlists.Count; i++)
+            {
+                Console.WriteLine(Playlists[i].Title + "\n");
+            }
+            int num = Console.Read();
+            Playlists[num].Remove(iPlayable);
         }
     }
 }

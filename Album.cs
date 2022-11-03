@@ -8,21 +8,35 @@ namespace Spotify
 {
     internal class Album : SongCollection
     {
-        private List<Artist> Artists;
+        protected List<Artist> Artists;
 
-        public Album(List<Artist> artists, string name, List<Song> songs)
+        public bool Correct { get; internal set; }
+
+
+        public Album(List<Artist> artists, string name, List<Song> songs): base(name)
         {
+            this.Artists = artists;
 
+
+            foreach(iPlayable iPlayable in playables)
+            {
+                songs.Add((Song)iPlayable);
+            }
         }
 
         public List<Artist> ShowArtists() 
-        { 
-            return Artists;
+        {
+            foreach (Artist artist in this.Artists)
+            {
+                Console.WriteLine(artist.Naam);
+            }
+
+            return this.Artists;
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            return this.Title;
         }
 
     }

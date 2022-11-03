@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Spotify
 {
-    internal interface iPlayable
+
+
+    public interface iPlayable
     {
         public void Play() { }
-        public void Pause() { }
-        public void Next() { }
-        public void Stop() { }
-        public int Length() { return 0; }
+        public void Pause() {  }
+        public void Next() {  }
+        public void Stop() {  }
+        int Length { get; }
 
     }
 }

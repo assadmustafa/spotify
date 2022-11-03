@@ -9,27 +9,36 @@ namespace Spotify
     internal class SongCollection
     {
         public string Title;
-        private List<iPlayable> playables;
+        protected List<iPlayable> playables;
+
         // Constructor method
         public SongCollection(string name)
         {
-
+            this.Title = name;
+            this.playables = new List<iPlayable>();
         }
 
-        // CAUTION: Not sure about that
-        public SongCollection()
-        {
-
-        }
 
         public List<iPlayable> ShowPlayables()
         {
-            return playables;
+            foreach (iPlayable playable in this.playables)
+            {
+                Console.WriteLine(playable);
+            }
+            return this.playables;
+        }
+
+        public void Play()
+        {
+            foreach (iPlayable playable in this.playables)
+            {
+                playable.Play();
+            }
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            return this.Title + ":";
         }
     }
 }

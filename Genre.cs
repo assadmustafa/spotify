@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace Spotify
 {
-    internal class Genre
+    public enum Genre
     {
-        public enum Genres
-        {
-            Rock,
-            Jazz,
-            Metal,
-            Pop,
-            Country,
-            Dance,
-            Rap
-        }
-        
+
+        Rock,
+        Jazz,
+        Metal,
+        Pop,
+        Country,
+        Dance,
+        Rap
+
     }
 }
